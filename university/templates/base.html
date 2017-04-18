@@ -18,19 +18,15 @@
 
 {% include 'system/header.html' %}
 
-<nav class="header_nav">
-    <div class="header_nav__inner">
-        <div class="container">
-            {% show_menu 0 100 100 100 'system/menu.html' %}
-        </div>
-    </div>
-</nav>
+
+{% show_menu 0 100 100 100 'system/menu.html' %}
+
 
 <article class="content page">
     <section class="section section--padding">
         <div class="container">
             <div class="row">
-                <div class="col-sm-8 col-md-6 automargin">
+                <div class="col-sm-8 col-md-8 automargin">
                     {% block content %}{% endblock content %}
                 </div>
             </div>

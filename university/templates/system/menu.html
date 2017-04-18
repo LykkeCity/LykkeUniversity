@@ -1,11 +1,39 @@
 {% load menu_tags %}
+<nav class="header_nav">
+    <div class="header_nav__inner">
+        <div class="container">
+            <ul class="header_nav__list nav_list">
+                {% for child in children %}
+                    <li class="nav_list__item {% if child.selected %}nav_list__item--active{% endif %}{% if child.ancestor %} nav_list__item--active{% endif %}">
+                        <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+                            {{ child.get_menu_title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>
 
-<ul class="header_nav__list nav_list">
-    {% for child in children %}
-        <li class="nav_list__item {% if child.selected %}nav_list__item--active{% endif %}{% if child.ancestor %} nav_list__item--active{% endif %}">
-            <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
-                {{ child.get_menu_title }}
-            </a>
-        </li>
-    {% endfor %}
-</ul>
+{% for child in children %}
+    {% if child.selected or child.ancestor %}
+        {% if child.children|length > 0 %}
+            <nav class="site_nav">
+                <div class="site_nav__inner">
+                    <div class="container">
+                        <ul class="header_nav__list nav_list nav_list--alt">
+                            {% for childs in child.children %}
+                                <li class="nav_list__item {% if childs.selected %}nav_list__item--active{% endif %}{% if childs.ancestor %} nav_list__item--active{% endif %}">
+                                    <a href="{{ childs.attr.redirect_url|default:childs.get_absolute_url }}">
+                                        {{ childs.get_menu_title }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+

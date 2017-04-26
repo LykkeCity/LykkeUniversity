@@ -28,12 +28,9 @@ SECRET_KEY = '&3rufqmctr&2+%b4dlj=9q4)%$ghc#r0uw+du(b&ubu3&vqn1f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
-
-
-
 
 
 ROOT_URLCONF = 'university.urls'

@@ -1,4 +1,4 @@
 build:
-	docker build -t lykke_university .
+	docker build -t sokel/lykke_university .
 run:
-	docker run -it --rm --name lykke_university lykke_university
+	docker run -it --rm --name sokel_lykke_university sokel/lykke_university
